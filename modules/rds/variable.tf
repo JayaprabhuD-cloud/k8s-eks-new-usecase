@@ -1,7 +1,7 @@
-variable "client" {
-  description = "Name of the Client"
-  type        = string
-}
+#variable "client" {
+#  description = "Name of the Client"
+#  type        = string
+#}
 
 variable "private_subnets" {
   type = list(string)
