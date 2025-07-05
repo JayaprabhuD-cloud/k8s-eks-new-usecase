@@ -1,6 +1,6 @@
 module "vpc" {
   source = "./modules/vpc"
-  name           = var.name
+  name           = var.client
   vpc_cidr_block = var.vpc_cidr_block
   
 }

@@ -7,7 +7,7 @@ terraform {
   }
   backend "s3" {
     bucket = "bayer-new-terraform-remote-state-bucket"
-    key    = "usecase-8/terraform.tfstate"
+    key    = "usecase-eks/terraform.tfstate"
     region = "ap-south-1" 
 #    dynamodb_table = "bayer-new-terraform-remote-lock"    
   }
