@@ -40,7 +40,7 @@ module "eks" {
   eks_cluster_role = module.iam.eks_role_depends_on
   namespace_depends_on   = module.helm.namespace_depends_on
   namespace           = module.helm.namespace
-  security_group_id  = [module.security_groups.eks_security_group_id]
+  security_group_id  = [module.security_group.eks_security_group_id]
 
   depends_on = [
     module.vpc,
@@ -69,7 +69,7 @@ module "rds" {
 
   depends_on = [
     module.vpc,
-    module.security_groups,
+    module.security_group,
     module.eks
   ]
 }
