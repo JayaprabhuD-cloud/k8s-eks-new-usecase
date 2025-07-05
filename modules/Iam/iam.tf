@@ -115,7 +115,7 @@ resource "aws_iam_role_policy_attachment" "lbc_policy_attach" {
   policy_arn = "arn:aws:iam::058264249757:policy/AwsLoadBalancerControllerPolicy"
 }
 
-resource "aws_iam_role_policy_attachment" "lbc_policy_attach" {
+resource "aws_iam_role_policy_attachment" "lbc_policy_attach1" {
   role       = aws_iam_role.lb_pod_iam_role.name
   policy_arn = "arn:aws:iam::058264249757:policy/FlaskSecretsManagerPolicy" 
 }
