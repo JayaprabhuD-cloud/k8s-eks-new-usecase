@@ -33,14 +33,14 @@ module "eks" {
   name                = var.client
   public_subnets      = module.vpc.public_subnets
   private_subnets     = module.vpc.private_subnets
-  cluster_role_arn    = module.iam.eks_cluster_role_arn
-  node_role_arn       = module.iam.eks_node_role_arn
+  eks_cluster_role_arn    = module.iam.eks_cluster_role_arn
+  eks_node_role_arn       = module.iam.eks_node_role_arn
   fargate_profile_role_arn = module.iam.fargate_profile_role_arn
   eks_oidc_root_ca_thumbprint = var.eks_oidc_root_ca_thumbprint
-  cluster_role_dependency = module.iam.eks_role_depends_on
+  eks_cluster_role = module.iam.eks_role_depends_on
   namespace_depends_on   = module.helm.namespace_depends_on
   namespace           = module.helm.namespace
-  security_group_ids  = [module.security_groups.eks_security_group_id]
+  security_group_id  = [module.security_groups.eks_security_group_id]
 
   depends_on = [
     module.vpc,
