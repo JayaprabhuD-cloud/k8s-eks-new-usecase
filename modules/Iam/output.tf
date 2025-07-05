@@ -20,9 +20,9 @@ output "lbc_flack_pod_iam_role_arn" {
 }
 
 output "eks_role_depends_on" {
-  value = aws_iam_role.eks_role
+  value = aws_iam_role.eks_cluster_role
 }
 
 output "lbc_iam_depends_on" {
-  value = aws_iam_role.lbc_iam_role
+  value = aws_iam_role.lb_pod_iam_role
 }

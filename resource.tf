@@ -44,7 +44,7 @@ module "eks" {
 
   depends_on = [
     module.vpc,
-    module.security_groups
+    module.security_group
   ]
 }
 
@@ -54,14 +54,14 @@ module "helm" {
   cluster_endpoint = module.eks.cluster_endpoint
   cluster_certificate_authority_data = module.eks.cluster_certificate_authority_data
   lbc_iam_depends_on = module.iam.lbc_iam_depends_on
-  lbc_iam_role_arn   = module.lbc_flack_pod_iam_role_arn
+  lbc_iam_role_arn   = module.iam.lbc_flack_pod_iam_role_arn
   vpc_id             = module.vpc.vpc_id
   aws_region         = var.region
 }
 
 module "rds" {
   source               = "./modules/rds"
-  name                 = var.client
+  client                 = var.client
   private_subnets      = module.vpc.private_subnets
   db_username          = var.db_username
   database_name        = var.database_name
