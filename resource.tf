@@ -17,7 +17,7 @@ module "ecr" {
 
 module "iam" {
   source = "./modules/Iam"
-  name = var.name
+  client = var.client
   aws_iam_openid_connect_provider_arn = module.eks.aws_iam_openid_connect_provider_arn
   aws_iam_openid_connect_provider_extract_from_arn = module.eks.aws_iam_openid_connect_provider_extract_from_arn
 
@@ -30,7 +30,7 @@ module "iam" {
 
 module "eks" {
   source = "./modules/eks"
-  name                = var.client
+  client                = var.client
   public_subnets      = module.vpc.public_subnets
   private_subnets     = module.vpc.private_subnets
   eks_cluster_role_arn    = module.iam.eks_cluster_role_arn
