@@ -9,3 +9,8 @@ module "security_group" {
   client   = var.client
   vpc_id = module.vpc.vpc_id
 }
+
+module "ecr" {
+  source = "./modules/ecr"
+  client           = var.client 
+}
