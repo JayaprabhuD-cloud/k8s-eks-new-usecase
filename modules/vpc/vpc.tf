@@ -62,7 +62,7 @@ resource "aws_nat_gateway" "nat" {
 
 # Creating Private Route Table
 resource "aws_route_table" "pri-rt" {
-  vpc_id = aws_vpc.main.id
+  vpc_id = aws_vpc.vpc.id
 
   route {
     cidr_block     = "0.0.0.0/0"
