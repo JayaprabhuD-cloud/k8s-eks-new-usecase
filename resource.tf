@@ -12,5 +12,5 @@ module "security_group" {
 
 module "ecr" {
   source = "./modules/ecr"
-  client           = var.client 
+  client           = var.client
 }
