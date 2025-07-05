@@ -25,9 +25,11 @@ resource "aws_security_group" "eks" {
   }
 }
 
-resource "aws_security_group" "rds_sg" {
-  name        = "rds-sg"
-  description = "Allow MySQL from Web SG"
+# Creating security group for RDS DB
+
+resource "aws_security_group" "rds" {
+  name        = "${var.client}-rds-db-sg"
+  description = "RDS database SG"
   vpc_id      = var.vpc_id
 
   ingress {
@@ -43,14 +45,7 @@ resource "aws_security_group" "rds_sg" {
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
-}
-
-output "rds_security_group_aurora_id" {
-  description = "Security group ID for the RDS"
-  value       = aws_security_group.rds_sg.id 
-}
-
-output "eks_security_group_id" {
-  description = "Security group ID for the Application Load Balancer"
-  value       = aws_security_group.eks.id
+  tags = {
+    Name = "${var.client}-rds-aurora-mysql-sg"
+  }
 }
