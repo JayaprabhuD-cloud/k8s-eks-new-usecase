@@ -61,7 +61,7 @@ module "helm" {
 
 module "rds" {
   source               = "./modules/rds"
-  client                 = var.client
+#  client                 = var.client
   private_subnets      = module.vpc.private_subnets
   db_username          = var.db_username
   database_name        = var.database_name
