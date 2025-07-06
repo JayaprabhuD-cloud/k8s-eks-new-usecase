@@ -30,7 +30,7 @@ resource "aws_subnet" "pub-subs" {
 resource "aws_subnet" "pri-subs" {
   count             = 2
   vpc_id            = aws_vpc.vpc.id
-  cidr_block        = cidrsubnet("10.0.3.0/20", 4, count.index)
+  cidr_block        = cidrsubnet("10.0.21.0/20", 4, count.index)
   availability_zone = data.aws_availability_zones.available.names[count.index]
   tags = {
     Name = "${var.client}-Private-Subnet-${count.index}"

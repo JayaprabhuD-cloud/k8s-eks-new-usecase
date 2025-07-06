@@ -12,7 +12,6 @@ module "security_group" {
 
 module "ecr" {
   source = "./modules/ecr"
-  client           = var.client
 }
 
 module "iam" {
