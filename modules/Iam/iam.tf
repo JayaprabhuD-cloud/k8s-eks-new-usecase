@@ -108,6 +108,42 @@ resource "aws_iam_role" "lb_pod_iam_role" {
   }
 }
 
+resource "aws_iam_role" "lbc_iam_role" {
+  name = "${var.client}-lbc-iam-role"
+
+  # Terraform's "jsonencode" function converts a Terraform expression result to valid JSON syntax.
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Action = "sts:AssumeRoleWithWebIdentity"
+        Effect = "Allow"
+        Sid    = ""
+        Principal = {
+          Federated = "${var.aws_iam_openid_connect_provider_arn}"
+        }
+        Condition = {
+          StringEquals = {
+            "${var.aws_iam_openid_connect_provider_extract_from_arn}:aud": "sts.amazonaws.com",            
+            "${var.aws_iam_openid_connect_provider_extract_from_arn}:sub": "system:serviceaccount:kube-system:aws-load-balancer-controller"
+          }
+        }        
+      },
+    ]
+  })
+
+  tags = {
+    tag-key = "AWSLoadBalancerControllerIAMPolicy"
+  }
+}
+
+# attaching aws loadbalanacer controller Policy to role
+
+resource "aws_iam_role_policy_attachment" "lbc_policy_attach_to_role" {
+  role       = aws_iam_role.lbc_iam_role.name
+  policy_arn = "arn:aws:iam::058264249757:policy/AwsLoadBalancerControllerPolicy"
+}
+
 # attaching aws loadbalanacer controller Policy to role
 
 resource "aws_iam_role_policy_attachment" "lbc_policy_attach" {
