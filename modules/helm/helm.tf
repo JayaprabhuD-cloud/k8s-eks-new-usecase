@@ -81,7 +81,7 @@ resource "kubernetes_namespace" "monitoring" {
 # Resource: Kubernetes Namespace fargate_namespace
 resource "kubernetes_namespace" "fargate_namespace" {
   metadata {
-    name = "react-fargate-ns"
+    name = "frontend"
   }
 }
 
