@@ -121,3 +121,14 @@ resource "aws_iam_role_policy_attachment" "lbc_policy_attach1" {
 }
 
 
+#Condition = {
+#  StringEquals = {
+#    "${var.aws_iam_openid_connect_provider_extract_from_arn}:aud": "sts.amazonaws.com"
+#  }
+#  StringLike = {
+#    "${var.aws_iam_openid_connect_provider_extract_from_arn}:sub": [
+#      "system:serviceaccount:kube-system:aws-load-balancer-controller",
+#      "system:serviceaccount:backend:flask-sa"
+#    ]
+#  }
+#}
