@@ -26,3 +26,8 @@ output "eks_role_depends_on" {
 output "lbc_iam_depends_on" {
   value = aws_iam_role.lb_pod_iam_role
 }
+
+output "lbc_iam_role_arn" {
+  description = "AWS Load Balancer Controller IAM Role ARN"
+  value = aws_iam_role.lbc_iam_role.arn
+}
