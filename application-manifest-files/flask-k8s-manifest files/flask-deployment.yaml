@@ -21,7 +21,7 @@ spec:
         - containerPort: 5000
         env:
         - name: DB_SECRET_NAME
-          value: "rds!cluster-ebab6659-57b4-4f2e-8e10-4bd8e6ebd4bb"
+          value: "rds!cluster-4d38aa5e-86f9-4362-812c-2a8446260c96"
         - name: AWS_REGION
           value: "us-east-1"
         - name: DB_HOST
